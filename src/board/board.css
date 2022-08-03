@@ -1,0 +1,15 @@
+.board-row {
+    height:34px;
+}
+
+.board-row:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.status {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
