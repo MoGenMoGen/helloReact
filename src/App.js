@@ -19,7 +19,7 @@ class App extends React.Component {
     this.setState({ show1: flag })
   }
   renderSubCompoent() {
-    if (this.state.show1)
+    if (this.state.show1)  
       return <Board />
     return <Text />
   }
