@@ -1,34 +1,23 @@
 import React from 'react';
 import Square from '../square/square';
 import './board.css'
+import {Button} from 'antd'
+import 'antd/dist/antd.css'
 class Board extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             date: new Date(),
-            squares: [0, 0, 0,
-                0, 0, 0,
-                0, 0, 0],
             timer: null,
+            temperature: 20
         }
     }
     renderSquare(k) {
-        return <Square k={k} value={this.state.squares[k]}
-            onClick={()=>{this.handleClick(k)}} />;
+        return <Square
+            onClick={this.handleClick} />;
     }
-    handleClick(i) {
-        this.setState((state) => {
-            return {
-                squares: state.squares.map((item, index) => {
-                    if (i == index) {
-                        item = item == 0 ? 1 : 0
-                    }
-                    return item
-                })
-            }
-        }
-        )
-
+    handleClick(p) {
+        console.log('bbb', p);
     }
     componentDidMount() {
         console.log('didMount');
@@ -43,23 +32,32 @@ class Board extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div style={{margin:'0 20px'}}>
                 <div className="status">{this.state.date.toLocaleTimeString()}</div>
                 <div className="board-row" >
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
+                    {this.renderSquare()}
+                    {this.renderSquare()}
+                    {this.renderSquare()}
+                </div> <div className="board-row" >
+                    {this.renderSquare()}
+                    {this.renderSquare()}
+                    {this.renderSquare()}
+                </div> <div className="board-row" >
+                    {this.renderSquare()}
+                    {this.renderSquare()}
+                    {this.renderSquare()}
                 </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
+                <input
+                    value={this.state.temperature}
+                    onChange={(e) => { this.setState((state) => ({ temperature: e.target.value })) }}
+                />
+                {
+                    this.state.temperature > 100 ?
+                        <p>水温沸腾</p>
+                        :
+                        <p>水温不沸腾</p>
+                }
+                 <Button type="primary">Primary Button</Button>
             </div>
         );
     }

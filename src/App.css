@@ -3,8 +3,9 @@
 }
 
 .tab {
+  margin:20px;
   width: 100px;
-  height: 30px;
+  height: 32px;
   line-height: 30px;
   display: flex;
   align-items: center;
