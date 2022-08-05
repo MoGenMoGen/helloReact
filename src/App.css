@@ -1,19 +1,22 @@
 .App {
   text-align: center;
+  padding:20px;
+  box-sizing: border-box;
 }
 
 .tab {
-  margin:20px;
-  width: 100px;
-  height: 32px;
+  margin-bottom:20px;
+  /* width: 99px; */
+  height: 30px;
   line-height: 30px;
   display: flex;
   align-items: center;
-  border: 1px solid green;
 }
 
-.tab1,.tab2 {
+.subTab {
   text-align: center;
-  flex: 1;
+  width: 50px;
   cursor: pointer;
+  border: 1px solid green;
+
 }

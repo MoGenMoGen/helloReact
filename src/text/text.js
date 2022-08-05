@@ -1,6 +1,7 @@
 import React from 'react';
 import './text.css'
 import './text.scss'
+// import styles from './text.less'
 
 class Text extends React.Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class Text extends React.Component {
 
         return (
             <div className="container">
+                {/* <h1 className={styles.zs}>我是张三</h1> */}
                 <div className='table'>
                     <div className='th'>
                         <div className='td'>姓名</div>

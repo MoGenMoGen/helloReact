@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import Board from './board/board';
 import Text from './text/text';
+import AntdCom from './antdCom/antdCom';
 
 // function App() {
 //   return (
@@ -13,34 +14,39 @@ import Text from './text/text';
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { show1: true }
+    this.state = { showIndex: 0 }
   }
-  handleClick(flag) {
-    this.setState({ show1: flag })
+  handleClick(index) {
+    this.setState({ showIndex: index })
   }
   renderSubCompoent() {
-    if (this.state.show1)  
+    if (this.state.showIndex==0)  
       return <Board />
+    if (this.state.showIndex==1)  
     return <Text />
+    if (this.state.showIndex==2)  
+    return <AntdCom />
+    
   }
   render() {
     let com;
-    if (this.state.show1)
+    if (this.state.showIndex)
       com = <Board />
     else
       com = <Text />
     return (
       <div className='App'>
         <div className='tab'>
-          <div className='tab1' style={{ background: this.state.show1 ? 'green' : 'white' }} onClick={() => { this.handleClick(true) }}>棋盘</div>
-          <div className='tab2' style={{ background: !this.state.show1 ? 'green' : 'white' }} onClick={() => { this.handleClick(false) }}>文字</div>
+          <div className='subTab' style={{ background: this.state.showIndex==0 ? 'green' : 'white' ,'line-height':'29px'}} onClick={() => { this.handleClick(0) }}>棋盘</div>
+          <div className='subTab' style={{ background: this.state.showIndex==1 ? 'green' : 'white','line-height':'29px' }} onClick={() => { this.handleClick(1) }}>文字</div>
+          <div className='subTab' style={{ background: this.state.showIndex==2 ? 'green' : 'white','line-height':'29px' }} onClick={() => { this.handleClick(2) }}>Antd</div>
         </div>
         <div>
-          {/* {this.renderSubCompoent()} */}
+          {this.renderSubCompoent()}
           {/* {com} */}
-          {
-            this.state.show1?<Board/>:<Text/>
-          }
+          {/* {
+            this.state.showIndex?<Board/>:<Text/>
+          } */}
         </div>
       </div>
 
