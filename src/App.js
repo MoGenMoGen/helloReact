@@ -16,18 +16,6 @@ class App extends React.Component {
     super(props)
     this.state = { showIndex: 0 }
   }
-  handleClick(index) {
-    this.setState({ showIndex: index })
-  }
-  renderSubCompoent() {
-    if (this.state.showIndex==0)  
-      return <Board />
-    if (this.state.showIndex==1)  
-    return <Text />
-    if (this.state.showIndex==2)  
-    return <AntdCom />
-    
-  }
   render() {
     let com;
     if (this.state.showIndex)
@@ -37,9 +25,9 @@ class App extends React.Component {
     return (
       <div className='App'>
         <div className='tab'>
-          <div className='subTab' style={{ background: this.state.showIndex==0 ? 'green' : 'white' ,'line-height':'29px'}} onClick={() => { this.handleClick(0) }}>棋盘</div>
-          <div className='subTab' style={{ background: this.state.showIndex==1 ? 'green' : 'white','line-height':'29px' }} onClick={() => { this.handleClick(1) }}>文字</div>
-          <div className='subTab' style={{ background: this.state.showIndex==2 ? 'green' : 'white','line-height':'29px' }} onClick={() => { this.handleClick(2) }}>Antd</div>
+          <div className='subTab' style={{ background: this.state.showIndex == 0 ? 'green' : 'white', 'lineHeight': '29px' }} onClick={() => { this.handleClick(0) }}>棋盘</div>
+          <div className='subTab' style={{ background: this.state.showIndex == 1 ? 'green' : 'white', 'lineHeight': '29px' }} onClick={() => { this.handleClick(1) }}>文字</div>
+          <div className='subTab' style={{ background: this.state.showIndex == 2 ? 'green' : 'white', 'lineHeight': '29px' }} onClick={() => { this.handleClick(2) }}>Antd</div>
         </div>
         <div>
           {this.renderSubCompoent()}
@@ -52,6 +40,19 @@ class App extends React.Component {
 
     )
   }
+  handleClick=(index)=> {
+    this.setState({ showIndex: index })
+  }
+  renderSubCompoent() {
+    if (this.state.showIndex == 0)
+      return <Board />
+    if (this.state.showIndex == 1)
+      return <Text />
+    if (this.state.showIndex == 2)
+      return <AntdCom />
+
+  }
+
 }
 
 export default App;

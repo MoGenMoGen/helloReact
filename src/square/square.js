@@ -7,7 +7,9 @@ class Square extends React.Component {
     }
     handleClick1() {
         this.setState((state) => ({ value: state.value == 0 ? 1 : 0 }), () => {
-            this.props.onClick(this.state.value)
+            // 子传父：子组件调用父组件传递过来的函数，并且传递数据作为函数实参
+            this.props.handleClick(this.state.value)
+            this.props.setMsg('这是来自子组件的Msg')
 
         })
     }

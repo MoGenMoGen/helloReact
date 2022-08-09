@@ -1,0 +1,1 @@
+export default bool => (jsx,defaultVal) => bool ? jsx : defaultVal;

@@ -1,22 +1,30 @@
 import React from 'react';
 import Square from '../square/square';
+import Content1 from '../content1/content1';
 import './board.css'
-import {Button } from 'antd';
+import { Button } from 'antd';
 class Board extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             date: new Date(),
             timer: null,
-            temperature: 20
+            temperature: 20,
+            msg:'父组件中的msg'
         }
     }
-    renderSquare(k) {
+    renderSquare=(k)=> {
+        // 子传父：父组件给子组件传递一个函数，在子组件中调用  
         return <Square
-            onClick={this.handleClick} />;
+            handleClick={this.handleClick}
+            setMsg={this.setMsg}
+        />;
     }
     handleClick(p) {
         console.log('bbb', p);
+    }
+    setMsg=(msg)=>{
+        this.setState({msg})
     }
     componentDidMount() {
         // console.log('didMount');
@@ -56,7 +64,7 @@ class Board extends React.Component {
                         :
                         <p>水温不沸腾</p>
                 }
-                 <Button type="primary">Primary Button</Button>
+                <Content1 msg={this.state.msg}></Content1>
 
             </div>
         );
