@@ -40,7 +40,6 @@ class Board extends React.Component {
     render() {
         return (
             <div>
-                <div className="status">{this.state.date.toLocaleTimeString()}</div>
                 <div className="board-row" >
                     {this.renderSquare()}
                     {this.renderSquare()}
