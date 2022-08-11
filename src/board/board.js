@@ -6,14 +6,18 @@ import { Button } from 'antd';
 class Board extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            date: new Date(),
-            timer: null,
-            temperature: 20,
-            msg:'父组件中的msg'
-        }
+        console.log('constructor');
+
     }
-    renderSquare=(k)=> {
+    static defaultProps={count:1}
+    state = {
+        date: new Date(),
+        timer: null,
+        temperature: 20,
+        msg: '父组件中的msg',
+        count:0
+    }
+    renderSquare = (k) => {
         // 子传父：父组件给子组件传递一个函数，在子组件中调用  
         return <Square
             handleClick={this.handleClick}
@@ -23,14 +27,14 @@ class Board extends React.Component {
     handleClick(p) {
         console.log('bbb', p);
     }
-    setMsg=(msg)=>{
-        this.setState({msg})
+    setMsg = (msg) => {
+        this.setState({ msg })
     }
     componentDidMount() {
-        // console.log('didMount');
+        console.log('didMount');
         this.timer = setInterval(() => {
             this.setState({ date: new Date() })
-        }, 1000);
+        }, 10000);
 
     }
     componentWillUnmount() {
@@ -38,6 +42,7 @@ class Board extends React.Component {
         // console.log('unmount');
     }
     render() {
+        console.log('render');
         return (
             <div>
                 <div className="status">{this.state.date.toLocaleTimeString()}</div>
@@ -65,9 +70,13 @@ class Board extends React.Component {
                         <p>水温不沸腾</p>
                 }
                 <Content1 msg={this.state.msg}></Content1>
+                <div onClick={this.hanleClickNum}>{this.state.count}</div>
 
             </div>
         );
+    }
+    hanleClickNum=()=>{
+        this.setState((state)=>({count:state.count+1}))
     }
 }
 
