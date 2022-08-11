@@ -1,11 +1,16 @@
+@import '~antd/dist/antd.css';
+
 .App {
   text-align: center;
-  padding:20px;
+  width: 80%;
+  margin: 50px auto;
   box-sizing: border-box;
 }
-
+.searchbox{
+  margin-bottom: 20px;
+}
 .tab {
-  margin-bottom:20px;
+  margin-bottom: 20px;
   /* width: 99px; */
   height: 30px;
   line-height: 30px;
